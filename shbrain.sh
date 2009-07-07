@@ -3,7 +3,7 @@
 while true
 do
 	read LINE || break
-	### First of all we get rid of the trailing \n
+	### First of all we get rid of a potential trailing \n
 	LEN=`expr ${#LINE} - 1`
 	LINE=${LINE[@]:0:$LEN}
 
@@ -12,15 +12,14 @@ do
 		EXPAND=(${LINE})
 		CMD=${EXPAND[4]#:}
 		ARGS=${EXPAND[*]:5}
-		if [[ "trains" =~  "$CMD" ]]; then
-			sh -ex ./shtrains.sh ${ARGS[*]}
-			break
+		if [ "$CMD" = "trains" ]; then
+			./shtrains.sh ${ARGS[*]}
 		elif [ "$CMD" = "help" ]; then
-				echo "PRIVMSG $CHANNEL2 :Help"
-				break
+			echo "Help"
 		else
-				echo "PRIVMSG $CHANNEL2 :Use \"shcmd help\" to list available commands."
+			echo "Use \"shcmd help\" to list available commands."
 		fi
+		break
 	fi
 
 	### Parsing brain file for potential replies
@@ -36,7 +35,7 @@ do
 		RESPONSE=${BRAIN[2]}
 		if [[ "$LINE" =~ ${PATTERN} ]]; then
 			if [[ "$((RANDOM / 320))" -lt ${PERCENT} ]]; then
-				echo "PRIVMSG $CHANNEL2 :"`eval echo $RESPONSE`
+				echo `eval echo $RESPONSE`
 				#awk 'NR==$LINENUM{$0='"$RESPONSE"'}1' shbrain.txt
 				#sed "$LINENUM"'s\\'"${PATTERN}	10	${RESPONSE}" -i shbrain.txt
 				break

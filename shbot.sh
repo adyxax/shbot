@@ -12,12 +12,13 @@ do
 		echo "PONG :${BASH_REMATCH[1]}" >&3
 		sleep 0.1
 	else
+		[[ ${LINE} =~ :[a-zA-Z]*!.*(#.*)\ :.* ]] && ORIGIN=${BASH_REMATCH[1]}
 		echo "${LINE}" | ./shbrain.sh | \
 		while true
 		do
 			read ANSWER || break
 			echo "--> "$ANSWER
-			echo $ANSWER >&3
+			echo "PRIVMSG $ORIGIN :"$ANSWER >&3
 		done
 	fi
 done
