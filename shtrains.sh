@@ -9,6 +9,10 @@ do
 	read STATION || break
 	read UGUU || break
 	[[ $PATTERN =~ \ *[A-Z]{4}\ *(.*) ]] && PATTERN=${BASH_REMATCH[1]}
+	if [[ $UGUU =~ Supprime ]]; then
+		read UGUU || break
+		continue
+	fi
 	if [ -n "$*" ]; then
 		[[ $STATION =~ $@ ]] && echo "$PATTERN $STATION"
 	else

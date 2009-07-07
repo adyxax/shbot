@@ -15,7 +15,7 @@ do
 		if [ "$CMD" = "trains" ]; then
 			./shtrains.sh ${ARGS[*]}
 		elif [ "$CMD" = "help" ]; then
-			echo "Help"
+			./shhelp.sh $ARGS
 		else
 			echo "Use \"shcmd help\" to list available commands."
 		fi
