@@ -1,18 +1,25 @@
 #!/bin/bash
 
-links -dump 'http://transilien.mobi/pam/TempReelSaisieDepartSubmit.do?debutDepart=Courbevoie&tous=Tous+trains' | head -n 22 | tail -n 18 >trains.tmp
+links -dump 'http://transilien.mobi/pam/TempReelSaisieDepartSubmit.do?debutDepart=Courbevoie&tous=Tous+trains' >trains.tmp
 
 cat trains.tmp | \
 while true
 do
-	read PATTERN || break
+	while true
+	do
+		read PATTERN || break
+		if [[ $PATTERN =~ \ *[A-Z]{4}\ *(.*)\ *Voie ]]; then
+			PATTERN=${BASH_REMATCH[1]}
+			break
+		fi
+	done
 	read STATION || break
 	read UGUU || break
-	[[ $PATTERN =~ \ *[A-Z]{4}\ *(.*) ]] && PATTERN=${BASH_REMATCH[1]}
 	if [[ $UGUU =~ Supprime ]]; then
 		read UGUU || break
 		continue
 	fi
+	#[[ $STATION =~ Versailles\ Rive\ Droite ]] && STATION="Versailles Rive Droit"
 	if [ -n "$*" ]; then
 		[[ $STATION =~ $@ ]] && echo "$PATTERN $STATION"
 	else
