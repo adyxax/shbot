@@ -18,7 +18,7 @@ do
 		do
 			read ANSWER || break
 			echo "--> "$ANSWER
-			echo "PRIVMSG $ORIGIN :"$ANSWER >&3
+			echo "PRIVMSG $ORIGIN :"$ANSWER >&3 3>&3
 		done
 	fi
 done

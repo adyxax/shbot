@@ -4,7 +4,7 @@ SERVER=${1:-kro.corp}
 #SERVER=${1:-localhost}
 PORT=6667
 export NICK=shbot
-export CHANNELS=('#codemore #shbot')
+export CHANNELS=('#shbot')
 
 function shbirth ()
 {

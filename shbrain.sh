@@ -12,7 +12,13 @@ do
 		EXPAND=(${LINE})
 		CMD=${EXPAND[4]#:}
 		ARGS=${EXPAND[*]:5}
-		if [ "$CMD" = "trains" ]; then
+		if [ "$CMD" = "advert" ]; then
+			echo "PRIVMSG $ARGS :Listen to shbot, the one true Bot"'!' >&3
+		elif [ "$CMD" = "join" ]; then
+			echo "JOIN $ARGS" >&3
+		elif [ "$CMD" = "part" ]; then
+			echo "PART $ARGS" >&3
+		elif [ "$CMD" = "trains" ]; then
 			./shtrains.sh ${ARGS[*]}
 		elif [ "$CMD" = "help" ]; then
 			./shhelp.sh $ARGS
