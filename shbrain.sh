@@ -18,6 +18,8 @@ do
 			echo "JOIN $ARGS" >&3
 		elif [ "$CMD" = "part" ]; then
 			echo "PART $ARGS" >&3
+		elif [ "$CMD" = "quote" ]; then
+			./shquote.sh ${ARGS[*]}
 		elif [ "$CMD" = "trains" ]; then
 			./shtrains.sh ${ARGS[*]}
 		elif [ "$CMD" = "help" ]; then

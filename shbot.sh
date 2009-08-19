@@ -10,7 +10,6 @@ do
 	echo "<-- "$LINE
 	if [[ "$LINE" =~ PING\ *:(.*) ]]; then
 		echo "PONG :${BASH_REMATCH[1]}" >&3
-		sleep 0.1
 	else
 		[[ ${LINE} =~ :[a-zA-Z]*!.*(#.*)\ :.* ]] && ORIGIN=${BASH_REMATCH[1]}
 		echo "${LINE}" | ./shbrain.sh | \
