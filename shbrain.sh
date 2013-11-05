@@ -13,7 +13,7 @@ do
 		CMD=${EXPAND[4]#:}
 		ARGS=${EXPAND[*]:5}
 		if [ "$CMD" = "advert" ]; then
-			echo "PRIVMSG $ARGS :Listen to shbot, the one true Bot"'!' >&3
+			echo "Listen to shbot, the one true Bot!"
 		elif [ "$CMD" = "join" ]; then
 			echo "JOIN $ARGS" >&3
 		elif [ "$CMD" = "part" ]; then
