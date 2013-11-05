@@ -11,7 +11,7 @@ do
 	if [[ "$LINE" =~ PING\ *:(.*) ]]; then
 		echo "PONG :${BASH_REMATCH[1]}" >&3
 	else
-		[[ ${LINE} =~ :[a-zA-Z]*!.*(#.*)\ :.* ]] && ORIGIN=${BASH_REMATCH[1]}
+		[[ ${LINE} =~ :[^!]*![^#]*(#.*)\ :.* ]] && ORIGIN=${BASH_REMATCH[1]}
 		echo "${LINE}" | ./shbrain.sh | \
 		while true
 		do

@@ -8,7 +8,7 @@ do
 	LINE=${LINE[@]:0:$LEN}
 
 	### Parsing potential shcmd
-	if [[ $LINE =~ :([a-zA-Z]*)!.*:shcmd ]]; then
+	if [[ $LINE =~ :([^!]*)!.*:shcmd ]]; then
 		EXPAND=(${LINE})
 		CMD=${EXPAND[4]#:}
 		ARGS=${EXPAND[*]:5}
