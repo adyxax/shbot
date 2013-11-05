@@ -1,7 +1,10 @@
-#!/bin/bash -ex
+#!/usr/bin/env bash
+set -e
 
 case "$1" in
 	"advert") echo "advert <CHANNEL> : Make shbot speak the truth about himself on the specified CHANNEL."
+	;;
+	"duck") echo "help <TOPIC> : Prints a cute duck."
 	;;
 	"help") echo "help <TOPIC> : Prints help about TOPIC."
 	;;
