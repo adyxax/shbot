@@ -16,7 +16,7 @@ case "$1" in
 	"trains") echo "trains [STATION] : Prints the next trains that will stop at Courbevoie's station."
 	echo "    When provided, only results that concerns STATION are advertised."
 	;;
-	*) echo "The following commands are available : advert help join part quote trains"
+	*) echo "The following commands are available : advert help join part quote trains duck"
 	;;
 esac
 

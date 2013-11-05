@@ -22,6 +22,8 @@ do
 			./shquote.sh ${ARGS[*]}
 		elif [ "$CMD" = "trains" ]; then
 			./shtrains.sh ${ARGS[*]}
+		elif [ "$CMD" = "duck" ]; then
+			./shduck.sh
 		elif [ "$CMD" = "help" ]; then
 			./shhelp.sh $ARGS
 		else
