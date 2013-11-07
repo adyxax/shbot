@@ -5,8 +5,9 @@ if [ -n "$2" ]; then
     OWNER=$1
     LEN=`expr ${#ARGS[*]}`
     QUOTE=${ARGS[@]:1:$LEN}
+    TIMESTAMP=`date +"%Y-%m-%d %H:%M UTC %z"`
 
-    echo "${OWNER}" >> shquote.txt
+    echo "${OWNER} ${TIMESTAMP}" >> shquote.txt
     echo "${QUOTE}" >> shquote.txt
 #elif [ -n "$1" ]; then
     # TODO : quote someone
